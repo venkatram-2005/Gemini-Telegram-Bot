@@ -2,6 +2,8 @@
 
 An AI-powered Telegram bot that leverages Google Gemini AI, MongoDB, and SERP API for generating text responses, sentiment analysis, image description, file summarization, and web searches. Additionally, the project includes a Power BI dashboard for visualizing collected data.
 
+## Access the bot [here](https://t.me/Ram04_Img_Bot)
+
 ## Features
 - AI-powered text generation
 - Sentiment analysis
