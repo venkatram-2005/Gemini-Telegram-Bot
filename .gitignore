@@ -1,4 +1,5 @@
 env
+.env
 __pycache__
 gemini_session.session
 gemini_session.session-journal

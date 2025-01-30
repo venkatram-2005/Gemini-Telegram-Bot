@@ -15,7 +15,20 @@ from pyrogram.types import Message, ReplyKeyboardMarkup, KeyboardButton
 from pyrogram.enums import ParseMode
 from pyrogram.errors import FloodWait
 import google.generativeai as genai
-from config import API_ID, API_HASH, BOT_TOKEN, GOOGLE_API_KEY, MODEL_NAME, SERP_API_KEY, MONGO_URI
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Retrieve values from .env
+MONGO_URI = os.getenv("MONGO_URI")
+API_ID = os.getenv("API_ID")
+API_HASH = os.getenv("API_HASH")
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+MODEL_NAME = os.getenv("MODEL_NAME")
+SERP_API_KEY = os.getenv("SERP_API_KEY")
+
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
