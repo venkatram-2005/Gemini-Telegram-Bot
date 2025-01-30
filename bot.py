@@ -15,7 +15,7 @@ from pyrogram.types import Message, ReplyKeyboardMarkup, KeyboardButton
 from pyrogram.enums import ParseMode
 from pyrogram.errors import FloodWait
 import google.generativeai as genai
-# from config import API_ID, API_HASH, BOT_TOKEN, GOOGLE_API_KEY, MODEL_NAME, SERP_API_KEY, MONGO_URI
+from config import API_ID, API_HASH, BOT_TOKEN, GOOGLE_API_KEY, MODEL_NAME, SERP_API_KEY, MONGO_URI
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
