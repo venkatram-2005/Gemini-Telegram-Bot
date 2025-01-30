@@ -15,7 +15,7 @@ from pyrogram.types import Message, ReplyKeyboardMarkup, KeyboardButton
 from pyrogram.enums import ParseMode
 from pyrogram.errors import FloodWait
 import google.generativeai as genai
-from config import API_ID, API_HASH, BOT_TOKEN, GOOGLE_API_KEY, MODEL_NAME, SERP_API_KEY
+from config import API_ID, API_HASH, BOT_TOKEN, GOOGLE_API_KEY, MODEL_NAME, SERP_API_KEY, MONGO_URI
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -39,7 +39,6 @@ genai.configure(api_key=GOOGLE_API_KEY)
 model = genai.GenerativeModel(MODEL_NAME)
 
 # MongoDB Connection
-MONGO_URI = "mongodb+srv://User:sefthuko@cluster0.7krku.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000)
 
 # Verify MongoDB connection
@@ -87,8 +86,12 @@ def get_sentiment(text):
         return "negative"
     else:
         return "neutral"
-    
 
+# Command Handler for /help
+@app.on_message(filters.command("help"))
+async def help_command(client: Client, message: Message):
+    await message.reply_text(HELP_TEXT)
+    
 @app.on_message(filters.command("start"))
 @append_help
 async def start_handler(client: Client, message: Message):
