@@ -10,7 +10,13 @@ An AI-powered Telegram bot that leverages Google Gemini AI, MongoDB, and SERP AP
 - Web search integration with SERP API
 - MongoDB database for storing user interactions
 - Power BI dashboard for data visualization
+  
   ![image](https://github.com/user-attachments/assets/369fa96f-f421-4cf9-9668-15ee681df7e7)
+
+## Demo Video
+
+You can view the demo video [here](https://www.loom.com/share/faf8b2d3fd034118ac17e87d483f480d?sid=4ad8c126-0570-4826-ba8d-cd2b3e69427d).
+
 
 ## Setup Guide
 
