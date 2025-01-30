@@ -6,7 +6,6 @@ charset-normalizer==3.4.1
 click==8.1.8
 colorama==0.4.6
 dnspython==2.7.0
-Flask==3.1.0
 google-ai-generativelanguage==0.6.15
 google-api-core==2.24.1
 google-api-python-client==2.160.0
@@ -18,7 +17,6 @@ google_search_results==2.4.2
 googleapis-common-protos==1.66.0
 grpcio==1.70.0
 grpcio-status==1.70.0
-gunicorn==23.0.0
 httplib2==0.22.0
 idna==3.10
 itsdangerous==2.2.0

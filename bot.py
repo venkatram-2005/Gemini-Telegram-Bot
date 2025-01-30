@@ -16,9 +16,6 @@ from pyrogram.enums import ParseMode
 from pyrogram.errors import FloodWait
 import google.generativeai as genai
 from dotenv import load_dotenv
-from flask import Flask
-
-app = Flask(__name__)
 
 # Load environment variables from .env file
 load_dotenv()
