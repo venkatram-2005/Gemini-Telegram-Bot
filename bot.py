@@ -376,5 +376,6 @@ async def web_search(client: Client, message: Message):
 
 # Run the bot
 if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5040))
     logger.info("Starting the bot...")
     app.run()
