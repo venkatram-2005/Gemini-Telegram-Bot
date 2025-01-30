@@ -81,7 +81,7 @@ A Power BI dashboard is available to visualize data collected from user interact
 - **File Categories:** Breakdown of different types of files uploaded (PDF, images, etc.).
 - **Chats Over Time:** Line chart displaying user activity trends over time.
 
-  ![image](https://github.com/user-attachments/assets/75a91d43-b829-415d-8ada-0d2f00b98b46)
+  ![3](https://github.com/user-attachments/assets/8b48b3cd-cc0a-4592-ba83-f72633471455)
 
 To access the Power BI dashboard:
 1. Open Power BI and import the dataset from MongoDB.
