@@ -2,12 +2,16 @@ import os
 import io
 import docx
 import time
+import signal
 import PyPDF2
 import asyncio
 import logging
 import PIL.Image
+import threading
+from flask import Flask
 from datetime import datetime
 from textblob import TextBlob
+from dotenv import load_dotenv
 from pymongo import MongoClient
 from serpapi import GoogleSearch
 from pyrogram import Client, filters
@@ -15,10 +19,14 @@ from pyrogram.types import Message, ReplyKeyboardMarkup, KeyboardButton
 from pyrogram.enums import ParseMode
 from pyrogram.errors import FloodWait
 import google.generativeai as genai
-from dotenv import load_dotenv
-from flask import Flask
-import threading
 from apscheduler.schedulers.background import BackgroundScheduler
+
+def handle_sigterm(signum, frame):
+    print("SIGTERM received but ignored!")
+
+# Override default SIGTERM behavior
+signal.signal(signal.SIGTERM, handle_sigterm)
+
 
 # Load environment variables from .env file
 load_dotenv()
@@ -57,13 +65,23 @@ def home():
 
 
 def keep_alive():
-    with app:
-        app.send_message("/text", "How are you ?")  # Sends a message to yourself
+    try:
+        if not app.is_connected:  # Check if the client is connected
+            with app:
+                app.send_message("/text", "How are you ?")  # Sends a message to yourself to keep your code for keeping the bot alive
+    except ConnectionError:
+        print("Client is already connected.")
+    except FloodWait as e:
+        print(f"Waiting for {e.x} seconds due to flood control.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        
 
 # Scheduler to run task every 10 minutes
 scheduler = BackgroundScheduler()
 scheduler.add_job(keep_alive, "interval", minutes=1)
 scheduler.start()
+
 
 #####################################
 
