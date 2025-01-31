@@ -16,6 +16,8 @@ from pyrogram.enums import ParseMode
 from pyrogram.errors import FloodWait
 import google.generativeai as genai
 from dotenv import load_dotenv
+from flask import Flask
+import threading
 
 # Load environment variables from .env file
 load_dotenv()
@@ -42,6 +44,17 @@ app = Client(
     bot_token=BOT_TOKEN,
     parse_mode=ParseMode.MARKDOWN
 )
+
+###################################
+
+web_app = Flask(__name__)
+
+# Define a simple route for the web service (Render requires an open port)
+@web_app.route('/')
+def home():
+    return "Telegram Bot is Running!"
+
+#####################################
 
 # Check Google API Key
 if not GOOGLE_API_KEY:
@@ -374,8 +387,17 @@ async def web_search(client: Client, message: Message):
         await loading_msg.delete()
 
 
-# Run the bot
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5040))
-    logger.info("Starting the bot...")
+# Function to start the bot
+def run_bot():
     app.run()
+
+# Function to start Flask web service
+def run_web():
+    port = int(os.environ.get("PORT", 5000))  # Render uses an environment variable for port
+    web_app.run(host="0.0.0.0", port=port)
+
+if __name__ == "__main__":
+    # Start Telegram bot on one thread
+    web_thread = threading.Thread(target=run_web)
+    web_thread.start()
+    run_bot()
