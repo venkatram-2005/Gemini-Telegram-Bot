@@ -18,6 +18,7 @@ import google.generativeai as genai
 from dotenv import load_dotenv
 from flask import Flask
 import threading
+from apscheduler.schedulers.background import BackgroundScheduler
 
 # Load environment variables from .env file
 load_dotenv()
@@ -53,6 +54,16 @@ web_app = Flask(__name__)
 @web_app.route('/')
 def home():
     return "Telegram Bot is Running!"
+
+
+def keep_alive():
+    with app:
+        app.send_message("/text", "How are you ?")  # Sends a message to yourself
+
+# Scheduler to run task every 10 minutes
+scheduler = BackgroundScheduler()
+scheduler.add_job(keep_alive, "interval", minutes=1)
+scheduler.start()
 
 #####################################
 
