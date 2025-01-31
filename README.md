@@ -24,12 +24,12 @@ You can view the demo video [here](https://www.loom.com/share/faf8b2d3fd034118ac
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/gemini-telegram-bot.git
+git clone https://github.com/venkatram-2005/Gemini-Telegram-Bot.git
 cd gemini-telegram-bot
 ```
 
-### 2. Configure `config.py`
-Create a `config.py` file in the root directory and add the following credentials:
+### 2. Configure `.env`
+Create a `.env` file in the root directory and add the following credentials:
 
 ```python
 # MongoDB URL
